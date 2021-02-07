@@ -1,6 +1,7 @@
 from tkinter import *
 
 from tkinter.ttk import Combobox
+from tkinter import messagebox as mb
 
 
 
@@ -32,12 +33,12 @@ class Registration:
         facultychoosen.current()
 
         # Buttons for entry form
-        self.btn1 = Button(reg, text="Insert", font=("Arial Black",8), width=5)
-        self.btn2 = Button(reg, text="Update", font=("Arial Black",8), width=5)
-        self.btn3 = Button(reg, text="Delete", font=("Arial Black",8), width=5)
-        self.btn4 = Button(reg, text="Get", font=("Arial Black",8), width=5)
-        self.btn5 = Button(reg, text="Clear", font=("Arial Black",8), width=5)
-        self.btn6 = Button(reg, text="Quit", font=("Arial Black",8), width=5)
+        self.btn1 = Button(reg, text="Insert", fg='yellow', bg='black', font=("Arial Black",8), width=5)
+        self.btn2 = Button(reg, text="Update", fg='yellow', bg='black', font=("Arial Black",8), width=5)
+        self.btn3 = Button(reg, text="Delete", fg='yellow', bg='black', font=("Arial Black",8), width=5)
+        self.btn4 = Button(reg, text="Get", fg='yellow', bg='black', font=("Arial Black",8), width=5)
+        self.btn5 = Button(reg, text="Clear",fg='yellow', bg='black', font=("Arial Black",8), width=5)
+        self.btn6 = Button(reg, text="Quit", fg='yellow', bg='black', font=("Arial Black",8), width=5, command=self.leave)
         self.btn1.place(x=30,y=50)
         self.btn2.place(x=30,y=100)
         self.btn3.place(x=30,y=150)
@@ -78,6 +79,27 @@ class Registration:
         self.entr5.place(x=250, y=150)
         self.lbl6.place(x=450, y=150)
         self.entr6.place(x=550, y=150)
+
+
+
+# Function for the quit button to exit the program
+    def leave(self):
+        if mb.askyesno('Exit Program', 'Do you want to quit?'):
+            window.destroy()
+        else:
+            mb.showinfo('Aborted', 'Quit has been cancelled')
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
