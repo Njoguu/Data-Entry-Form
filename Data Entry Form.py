@@ -1,8 +1,26 @@
 from tkinter import *
-
 from tkinter.ttk import Combobox
 from tkinter import messagebox as mb
+import openpyxl, xlrd
+from openpyxl import Workbook
+import pathlib
 
+
+
+file = pathlib.Path('Student_data.xlsx')
+if file.exists():
+    pass
+else:
+    file=Workbook()
+    sheet=file.active
+    sheet["A1"] = "Full Name"
+    sheet["B1"] = "Adm. No"
+    sheet["C1"] = "Class"
+    sheet["D1"] = "Phone No"
+    sheet["E1"] = "Residence"
+    sheet["F1"] = "DOB"
+
+    file.save('Student_data.xlsx')
 
 
 class Registration:
@@ -33,7 +51,7 @@ class Registration:
         facultychoosen.current()
 
         # Buttons for entry form
-        self.btn1 = Button(reg, text="Insert", fg='yellow', bg='black', font=("Arial Black",8), width=5)
+        self.btn1 = Button(reg, text="Insert", fg='yellow', bg='black', font=("Arial Black",8), width=5, command=self.enter)
         self.btn2 = Button(reg, text="Update", fg='yellow', bg='black', font=("Arial Black",8), width=5)
         self.btn3 = Button(reg, text="Delete", fg='yellow', bg='black', font=("Arial Black",8), width=5)
         self.btn4 = Button(reg, text="Get", fg='yellow', bg='black', font=("Arial Black",8), width=5)
@@ -88,6 +106,40 @@ class Registration:
             window.destroy()
         else:
             mb.showinfo('Aborted', 'Quit has been cancelled')
+
+    def enter(self):
+        a=self.entr1.get()
+        b=self.entr2.get()
+        c=self.entr3.get()
+        d=self.entr4.get()
+        e=self.entr5.get()
+        f=self.entr6.get()
+
+        print(a)
+        print(b)
+        print(c)
+        print(d)
+        print(e)
+        print(f)
+
+
+        file=openpyxl.load_workbook("Student_data.xlsx")
+        sheet=file.active
+        sheet.cell(column=1,row=sheet.max_row+1,value=a)
+        sheet.cell(column=2,row=sheet.max_row,value=b)
+        sheet.cell(column=3,row=sheet.max_row,value=c)
+        sheet.cell(column=4,row=sheet.max_row,value=d)
+        sheet.cell(column=5,row=sheet.max_row,value=e)
+        sheet.cell(column=6,row=sheet.max_row,value=f)
+
+        file.save("Student_data.xlsx")
+
+
+
+
+
+
+
 
 
 
