@@ -19,6 +19,7 @@ else:
     sheet["D1"] = "Phone No"
     sheet["E1"] = "Residence"
     sheet["F1"] = "DOB"
+    sheet["G1"] = "Faculty"
 
     file.save('Student_data.xlsx')
 
@@ -55,7 +56,7 @@ class Registration:
         self.btn2 = Button(reg, text="Update", fg='yellow', bg='black', font=("Arial Black",8), width=5)
         self.btn3 = Button(reg, text="Delete", fg='yellow', bg='black', font=("Arial Black",8), width=5)
         self.btn4 = Button(reg, text="Get", fg='yellow', bg='black', font=("Arial Black",8), width=5)
-        self.btn5 = Button(reg, text="Clear",fg='yellow', bg='black', font=("Arial Black",8), width=5)
+        self.btn5 = Button(reg, text="Clear",fg='yellow', bg='black', font=("Arial Black",8), width=5, command=self.clear)
         self.btn6 = Button(reg, text="Quit", fg='yellow', bg='black', font=("Arial Black",8), width=5, command=self.leave)
         self.btn1.place(x=30,y=50)
         self.btn2.place(x=30,y=100)
@@ -114,6 +115,7 @@ class Registration:
         d=self.entr4.get()
         e=self.entr5.get()
         f=self.entr6.get()
+        g=self.lbl7.get()
 
         print(a)
         print(b)
@@ -121,6 +123,7 @@ class Registration:
         print(d)
         print(e)
         print(f)
+        print(g)
 
 
         file=openpyxl.load_workbook("Student_data.xlsx")
@@ -131,8 +134,19 @@ class Registration:
         sheet.cell(column=4,row=sheet.max_row,value=d)
         sheet.cell(column=5,row=sheet.max_row,value=e)
         sheet.cell(column=6,row=sheet.max_row,value=f)
+        sheet.cell(column=7,row=sheet.max_row,value=g)
 
         file.save("Student_data.xlsx")
+
+    def clear(self):
+        self.entr1.delete(0, END)
+        self.entr2.delete(0, END)
+        self.entr3.delete(0, END)
+        self.entr4.delete(0, END)
+        self.entr5.delete(0, END)
+        self.entr6.delete(0, END)
+        self.lbl7.set("")
+
 
 
 
