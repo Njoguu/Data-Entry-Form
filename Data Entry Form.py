@@ -136,6 +136,15 @@ class Registration:
         sheet.cell(column=6,row=sheet.max_row,value=f)
         sheet.cell(column=7,row=sheet.max_row,value=g)
 
+        self.entr1.delete(0, END)
+        self.entr2.delete(0, END)
+        self.entr3.delete(0, END)
+        self.entr4.delete(0, END)
+        self.entr5.delete(0, END)
+        self.entr6.delete(0, END)
+        self.lbl7.set("")
+
+
         file.save("Student_data.xlsx")
 
     def clear(self):
