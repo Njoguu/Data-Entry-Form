@@ -1,3 +1,4 @@
+# Import modules
 from tkinter import *
 from tkinter.ttk import Combobox
 from tkinter import messagebox as mb
@@ -6,7 +7,7 @@ from openpyxl import Workbook
 import pathlib
 
 
-
+# Create the Excel Spreadsheet as Database
 file = pathlib.Path('Student_data.xlsx')
 if file.exists():
     pass
@@ -51,7 +52,7 @@ class Registration:
         facultychoosen.grid(column=1, row=5,)
         facultychoosen.current()
 
-        # Buttons for entry form
+# Buttons for the entry form
         self.btn1 = Button(reg, text="Insert", fg='yellow', bg='black', font=("Arial Black",8), width=5, command=self.enter)
         self.btn2 = Button(reg, text="Update", fg='yellow', bg='black', font=("Arial Black",8), width=5)
         self.btn3 = Button(reg, text="Delete", fg='yellow', bg='black', font=("Arial Black",8), width=5)
@@ -65,21 +66,7 @@ class Registration:
         self.btn5.place(x=30,y=250)
         self.btn6.place(x=30,y=300)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Label and entry styling
         self.entr1 = Entry(fg='black', bg='white')
         self.entr2 = Entry(fg='black', bg='white')
         self.entr3 = Entry(fg='black', bg='white')
@@ -99,8 +86,6 @@ class Registration:
         self.lbl6.place(x=450, y=150)
         self.entr6.place(x=550, y=150)
 
-
-
 # Function for the quit button to exit the program
     def leave(self):
         if mb.askyesno('Exit Program', 'Do you want to quit?'):
@@ -108,6 +93,7 @@ class Registration:
         else:
             mb.showinfo('Aborted', 'Quit has been cancelled')
 
+# Function for the enter button to enter data in the entries
     def enter(self):
         a=self.entr1.get()
         b=self.entr2.get()
@@ -143,10 +129,9 @@ class Registration:
         self.entr5.delete(0, END)
         self.entr6.delete(0, END)
         self.lbl7.set("")
-
-
         file.save("Student_data.xlsx")
 
+# Button function for clearing all records in the entries
     def clear(self):
         self.entr1.delete(0, END)
         self.entr2.delete(0, END)
@@ -156,39 +141,7 @@ class Registration:
         self.entr6.delete(0, END)
         self.lbl7.set("")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Create window
 window=Tk()
 window.title("Student Registration")
 mywin=Registration(window)
