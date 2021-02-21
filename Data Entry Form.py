@@ -143,6 +143,9 @@ class Registration:
 
 # Create window
 window=Tk()
+    #Add Icon on the application window
+icon = PhotoImage(file = 'icon.png')
+window.iconphoto(False,icon)
 window.title("Student Registration")
 mywin=Registration(window)
 lbl=Label(window, text="STUDENT REGISTRATION", fg='black', font=("Arial Black", 16))
