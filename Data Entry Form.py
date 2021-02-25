@@ -55,7 +55,7 @@ class Registration:
 # Buttons for the entry form
         self.btn1 = Button(reg, text="Insert", fg='yellow', bg='black', font=("Arial Black",8), width=5, command=self.enter)
         self.btn2 = Button(reg, text="Update", fg='yellow', bg='black', font=("Arial Black",8), width=5)
-        self.btn3 = Button(reg, text="Delete", fg='yellow', bg='black', font=("Arial Black",8), width=5)
+        self.btn3 = Button(reg, text="Delete", fg='yellow', bg='black', font=("Arial Black",8), width=5, command=self.delete)
         self.btn4 = Button(reg, text="Get", fg='yellow', bg='black', font=("Arial Black",8), width=5)
         self.btn5 = Button(reg, text="Clear",fg='yellow', bg='black', font=("Arial Black",8), width=5, command=self.clear)
         self.btn6 = Button(reg, text="Quit", fg='yellow', bg='black', font=("Arial Black",8), width=5, command=self.leave)
@@ -92,6 +92,17 @@ class Registration:
             window.destroy()
         else:
             mb.showinfo('Aborted', 'Quit has been cancelled')
+
+# Function for the delete button to delete all data in the Entry Forms
+    def delete(self):
+        self.entr1.delete(0, END)
+        self.entr2.delete(0, END)
+        self.entr3.delete(0, END)
+        self.entr4.delete(0, END)
+        self.entr5.delete(0, END)
+        self.entr6.delete(0, END)
+        self.lbl7.set("")
+
 
 # Function for the enter button to enter data in the entries
     def enter(self):
@@ -143,13 +154,17 @@ class Registration:
 
 # Create window
 window=Tk()
-    #Add Icon on the application window
+ #Add Icon on the application window
 icon = PhotoImage(file = 'icon.png')
 window.iconphoto(False,icon)
+# Window Title
 window.title("Student Registration")
 mywin=Registration(window)
+
 lbl=Label(window, text="STUDENT REGISTRATION", fg='black', font=("Arial Black", 16))
 lbl.place(x=0,y=0)
+# Specifies the size of the Dat Entry Window
 window.geometry("900x700+10+20")
+# Executes window Tkinter code in an infinite loop to create the window
 window.mainloop()
 
